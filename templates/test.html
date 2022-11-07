@@ -1,0 +1,36 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+
+    <!-- Load d3.js -->
+    <script src="../static/js/d3.v4.js"></script>
+    
+    <!-- Load d3-cloud -->
+    <script src="../static/js/d3.layout.cloud.js"></script>
+    <script src="../static/js/seedrandom.min.js"> </script>
+    <script src="../static/js/wordcloud_test.js"></script>
+    <script src="../static/js/slider.js"></script>
+
+
+    <link rel="stylesheet" type='text/css' href="../static/css/style_wordcloud.css">
+
+    <body>
+
+        <div id='cloud-container'></div>
+      
+      
+        <script>
+            WordCloud({
+            container: '#cloud-container',
+            data: '../static/data/data.json'
+            });
+      
+        </script>
+        <div class="slidecontainer">
+            <input type="range" min="5" max="100" step = "5" value="50" class="slider" id="myRange">
+            <p>Value: <span id="demo"></span></p>
+        </div>
+  
+      </body>
+</html>

@@ -7,19 +7,33 @@ from django.conf import settings
 from djangoProject_2 import settings
 
 
-dic_url_name = {
-    'https://georgeeliotarchive.org/files/original/63eb6f7841561fd5f4c8e41c42b76508.txt': 'Adam Bede(1859).txt',
-    'https://georgeeliotarchive.org/files/original/ecce6017f39d885060f364c10a266846.txt': 'Brother Jacob(1864).txt',
-    'https://georgeeliotarchive.org/files/original/2149439c54aa729784f77413069e1f82.txt': 'Daniel Deronda(1876).txt',
-    'https://georgeeliotarchive.org/files/original/907b3c33ba7988bf524f20d837f1dc3b.txt': 'Felix Holt, the Radical(1866).txt',
-    'https://georgeeliotarchive.org/files/original/d828ef209fb49bf45bbb2d24f58e5b74.txt': 'Impressions of Theophrastus Such (1879).txt',
-    'https://georgeeliotarchive.org/files/original/947f73407b901969d01aeda630f7197d.txt': 'Middlemarch(1871-72).txt',
-    'https://georgeeliotarchive.org/files/original/3d43f4fe740957af8f44b3cc3c546634.txt': 'Romola(1863).txt',
-    'https://georgeeliotarchive.org/files/original/bc75805af6c1c3c320ecb1a35ce6726d.txt': 'Scenes of Clerical Life(1858).txt',
-    'https://georgeeliotarchive.org/files/original/43c0fcd54037b45ab266e76de89ad6d0.txt': 'Silas Marner(1861).txt',
-    'https://georgeeliotarchive.org/files/original/bb4d5db1d598a65e6955cff838c9e4c4.txt': 'The Lifted Veil(1859).txt',
-    'https://georgeeliotarchive.org/files/original/f1116bc8e477f576ff52d6dd4e6b2079.txt': 'The Mill on the Floss(1860).txt'
+# dic_id_name = {
+#     'https://georgeeliotarchive.org/files/original/63eb6f7841561fd5f4c8e41c42b76508.txt': 'Adam Bede(1859).txt',
+#     'https://georgeeliotarchive.org/files/original/ecce6017f39d885060f364c10a266846.txt': 'Brother Jacob(1864).txt',
+#     'https://georgeeliotarchive.org/files/original/2149439c54aa729784f77413069e1f82.txt': 'Daniel Deronda(1876).txt',
+#     'https://georgeeliotarchive.org/files/original/907b3c33ba7988bf524f20d837f1dc3b.txt': 'Felix Holt, the Radical(1866).txt',
+#     'https://georgeeliotarchive.org/files/original/d828ef209fb49bf45bbb2d24f58e5b74.txt': 'Impressions of Theophrastus Such (1879).txt',
+#     'https://georgeeliotarchive.org/files/original/947f73407b901969d01aeda630f7197d.txt': 'Middlemarch(1871-72).txt',
+#     'https://georgeeliotarchive.org/files/original/3d43f4fe740957af8f44b3cc3c546634.txt': 'Romola(1863).txt',
+#     'https://georgeeliotarchive.org/files/original/bc75805af6c1c3c320ecb1a35ce6726d.txt': 'Scenes of Clerical Life(1858).txt',
+#     'https://georgeeliotarchive.org/files/original/43c0fcd54037b45ab266e76de89ad6d0.txt': 'Silas Marner(1861).txt',
+#     'https://georgeeliotarchive.org/files/original/bb4d5db1d598a65e6955cff838c9e4c4.txt': 'The Lifted Veil(1859).txt',
+#     'https://georgeeliotarchive.org/files/original/f1116bc8e477f576ff52d6dd4e6b2079.txt': 'The Mill on the Floss(1860).txt'
+# }
+dic_id_name = {
+    '21626': 'Adam Bede(1859).txt',
+    '21627': 'Brother Jacob(1864).txt',
+    '21628': 'Daniel Deronda(1876).txt',
+    '21635': 'Felix Holt, the Radical(1866).txt',
+    '21637': 'Impressions of Theophrastus Such (1879).txt',
+    '21638': 'Middlemarch(1871-72).txt',
+    '21639': 'Romola(1863).txt',
+    '21640': 'Scenes of Clerical Life(1858).txt',
+    '21641': 'Silas Marner(1861).txt',
+    '21642': 'The Lifted Veil(1859).txt',
+    '21643': 'The Mill on the Floss(1860).txt'
 }
+
 # Create your views here.
 def home(request):
     return render(request, "../templates/index.html")
@@ -39,8 +53,8 @@ def test_request(request):
     if request.method == 'GET':
         return HttpResponse('test request is OK, Method is GET')
     elif request.method == 'POST':
-        novel_url = request.POST['select_novel_list']
-        novel_name = dic_url_name[novel_url]
+        novel_id = request.POST['select_novel_list']
+        novel_name = dic_id_name[novel_id]
         keyword = request.POST['keyword']
 
         '''Open the file from media'''

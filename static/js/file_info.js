@@ -1,19 +1,38 @@
-function file_info() {
+// function requestAPI(id, callback) {
+//     let request = new XMLHttpRequest();
+//     request.onreadystatechange = function() {
+//         if (this.readyState == 'complete') {
+//             callback();
+//         }
+//     }
+//
+//     request.onload = callback;
+//     request.open("GET", "https://georgeeliotarchive.org/api/files?item=" + id);
+//     request.send(null);
+// }
+
+async function file_info() {
 
     // 1. Get the value from select tag
     // this.data_value = $("#select_novel_list option:selected").val();
     // this.data_title = $("#select_novel_list option:selected").text();
     var myselect = $("#select_novel_list option:selected");
-    var data_value = myselect.val();
+    var data_value_temp = parseInt(myselect.val());
+    // alert(data_value_temp);
     var data_text = myselect.text();
+    var api = "https://georgeeliotarchive.org/api/files?item="
+    var url = api + data_value_temp;
+    let response = await fetch (url);
+    let json = await response.text();
+    var data_value = JSON.parse(json)[0].file_urls.original;
 
     // document.getElementById("p_novel_file_name").innerHTML = "Selected file name: " + data_value + ", type of file is:" + typeof data_value;
-
     // 2. Read the value(URL) and get the txt content
     if (data_value == "0") {
         document.getElementById('novel_content').innerHTML = "Choose a novel from the drop-down list"
     } else {
         var txtFile = new XMLHttpRequest();
+        // alert(data_value);
         txtFile.open("GET", data_value, false);
         txtFile.onreadystatechange = function () {
             if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
@@ -33,21 +52,4 @@ function file_info() {
     document.getElementById("total_word_count").innerHTML = "Total word count : " + "  " + allText.length;
     $( '#query_results' ).empty();
     $( '#query_results_title' ).empty();
-
 }
-
-
-    // 3. Print the content into text area
-//     this.data_content = document.getElementById("input_file").files[0];
-//
-//     var reader = new FileReader();
-//     reader.onload = function (e){
-//         var textarea = document.getElementById("novel_content");
-//         textarea.value = e.target.result;
-//     }
-//     reader.readAsText(this.data_content)
-// }
-
-
-
-    // document.getElementById("novel_content").value = this.allText

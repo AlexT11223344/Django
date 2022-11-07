@@ -1,5 +1,5 @@
 function create_wordcloud() {
-    $( '#my_dataviz' ).empty();
+    $('#my_dataviz').empty();
     var novel_name = $("#select_novel_list option:selected").text();
     // alert(novel_name);
     // List of key words
@@ -32,55 +32,64 @@ function create_wordcloud() {
     var The_Mill_on_the_Floss_kw = ['foretelling', 'convalescence', 'resurrection', 'sufferings', 'prophecy', 'deathbed', 'foreshadowing', 'revelation', 'reawakening', 'anguish', 'reviving', 'suffocation', 'yearnings', 'death', 'suffering', 'repose', 'dying', 'torment', 'sorrows', 'trepidation', 'clairvoyants', 'exaltation', 'fainted', 'consciousness', 'sorrow', 'contemplation', 'souls', 'die', 'grave', 'befalls', 'befallen', 'yearning', 'onward', 'shakespeare', 'inscription', 'tremulousness', 'veil', 'tragedy', 'desires', 'alarm', 'waking', 'immortal', 'witnessing', 'corpse', 'melancholy', 'exalting', 'heaven', 'weeping', 'spirits', 'surviving']
     var myWords = []
 
-    if (novel_name == 'Adam Bede (1859)'){
+    if (novel_name == 'Adam Bede (1859)') {
         myWords = Adam_Bade_kw
         // alert("1")
-    }
-    else if (novel_name == 'Brother Jacob (1864)'){
+    } else if (novel_name == 'Brother Jacob (1864)') {
         myWords = Brother_Jacob_kw
         // alert("2")
-    }
-    else if (novel_name == 'Daniel Deronda (1876)'){
+    } else if (novel_name == 'Daniel Deronda (1876)') {
         myWords = Daniel_Deronda_kw
         // alert("3")
-    }
-    else if (novel_name == 'Felix Holt, the Radical (1866)'){
+    } else if (novel_name == 'Felix Holt, the Radical (1866)') {
         myWords = Flex_Holt_kw
         // alert("4")
-    }
-    else if (novel_name == 'Impressions of Theophrastus Such (1879)'){
+    } else if (novel_name == 'Impressions of Theophrastus Such (1879)') {
         myWords = Impressions_of_Theophrastus_Such_kw
         // alert("5")
-    }
-    else if (novel_name == 'Middlemarch (1871-72)'){
+    } else if (novel_name == 'Middlemarch (1871-72)') {
         myWords = Middle_March_kw
         // alert("6")
-    }
-    else if (novel_name == 'Romola (1863)'){
+    } else if (novel_name == 'Romola (1863)') {
         myWords = Romola_kw
         // alert("7")
-    }
-    else if (novel_name == 'Scenes of Clerical Life (1858)'){
+    } else if (novel_name == 'Scenes of Clerical Life (1858)') {
         myWords = Scenes_of_Clerical_Life_kw
         // alert("8")
-    }
-    else if (novel_name == 'Silas Marner (1861)'){
+    } else if (novel_name == 'Silas Marner (1861)') {
         myWords = Slias_Marner_kw
         // alert("9")
-    }
-    else if (novel_name == 'The Lifted Veil (1859)'){
+    } else if (novel_name == 'The Lifted Veil (1859)') {
         myWords = The_lifted_Veil_kw
         // alert("10")
-    }
-    else {
+    } else {
         myWords = The_Mill_on_the_Floss_kw
         // alert("11")
     }
+
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
+
+
+    //Part of Yue Cui
+
+
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
+    //********************************************************************************************
 
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 10, bottom: 10, left: 10},
         width = 600 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
+
 
 
     // append the svg object to the body of the page
@@ -222,6 +231,6 @@ function create_wordcloud() {
 //
 // //Start cycling through the demo data
 // showNewWords(myWordCloud);
-//
+
 
 
