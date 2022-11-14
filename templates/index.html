@@ -12,7 +12,8 @@
     <!--  3. Core JS of Bootstrap  -->
     <script src="../static/js/bootstrap.min.js" type="text/javascript" charset="UTF-8"></script>
     <!--  4. D3 package  -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+{#    <script src="https://d3js.org/d3.v7.min.js"></script>#}
+    <script src="https://d3js.org/d3.v4.js"></script>
 
     <!--  5. Load d3-cloud -->
     <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
@@ -31,8 +32,9 @@
 {#    <script type="text/javascript" src="static/js/NLP_function.js.js"></script>#}
     <script type="text/javascript" src="../static/js/wordcloud.js"></script>
 <!--    <script src="https://pulipulichen.github.io/blogger/posts/2016/11/r-text-mining/wordcloud2.js"></script>-->
-{#    <script type="text/javascript" src="../static/js/API.js"></script>#}
-    <script type="text/javascript" src="../static/js/data_visulization.js"></script>
+
+    <script type="text/javascript" src="../static/js/Ajax_req.js"></script>
+    <script type="text/javascript" src="../static/js/data_visualization.js"></script>
 
 {#Part of Yue Cui#}
 {#    <script src="../static/js/d3.layout.cloud.js"></script>#}
@@ -62,22 +64,11 @@
     <p id="p_novel_file_name"></p>
     <p id="p_novel_name"></p>
 -->
-{#    <form name="keyword_searching" id="keyword_searching" class="search1" method="post">#}
-    <form name="keyword_searching" id="keyword_searching" class="search1" action="/request_info" method="post">
+    <form name="keyword_searching" id="keyword_searching" class="search1" method="post">
+{#    <form name="keyword_searching" id="keyword_searching" class="search1" action="/request_info" method="post">#}
         {% csrf_token %}
         <select id="select_novel_list" name="select_novel_list" onchange="file_info(); create_wordcloud()">
                 <option value="0" disabled selected hidden>Select Text</option>
-{#                <option value="https://georgeeliotarchive.org/files/original/63eb6f7841561fd5f4c8e41c42b76508.txt">Adam Bede (1859)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/ecce6017f39d885060f364c10a266846.txt">Brother Jacob (1864)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/2149439c54aa729784f77413069e1f82.txt">Daniel Deronda (1876)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/907b3c33ba7988bf524f20d837f1dc3b.txt">Felix Holt, the Radical (1866)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/d828ef209fb49bf45bbb2d24f58e5b74.txt">Impressions of Theophrastus Such (1879)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/947f73407b901969d01aeda630f7197d.txt">Middlemarch (1871-72)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/3d43f4fe740957af8f44b3cc3c546634.txt">Romola (1863)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/bc75805af6c1c3c320ecb1a35ce6726d.txt">Scenes of Clerical Life (1858)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/43c0fcd54037b45ab266e76de89ad6d0.txt">Silas Marner (1861)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/bb4d5db1d598a65e6955cff838c9e4c4.txt">The Lifted Veil (1859)</option>#}
-{#                <option value="https://georgeeliotarchive.org/files/original/f1116bc8e477f576ff52d6dd4e6b2079.txt">The Mill on the Floss (1860)</option>#}
                 <option value="21626">Adam Bede (1859)</option>
                 <option value="21627">Brother Jacob (1864)</option>
                 <option value="21628">Daniel Deronda (1876)</option>
@@ -93,8 +84,8 @@
 
         <input type="text" id="keyword" name="keyword" placeholder="Type the keywords">
 
-{#        <input type="button" id="search" value="Search" onclick="keywordsearch()">#}
-        <input type="submit" id="search" value="Search" onclick="keywordsearch()">
+        <input type="button" id="search" value="Search" onclick="keywordsearch(); Ajax_req()">
+{#        <input type="submit" id="search" value="Search" onclick="keywordsearch()">#}
 
         <input type="checkbox" id="case_sensitive">
         <div class="sensitive_word">Case Sensitive</div>
@@ -209,6 +200,13 @@
             <input type="range" min="5" max="100" step = "5" value="50" class="slider" id="myRange">
             <p>Value: <span id="demo"></span></p>
         </div>
+
+
+
+{# Data visulization #}
+    <p id="title_datavis"></p>
+<div id="my_data_visualization" class="my_data_visualization">
+</div>
 
 </body>
 </html>

@@ -5,6 +5,11 @@ from django.http import HttpResponse
 import os
 from django.conf import settings
 from djangoProject_2 import settings
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+
+from django.http import JsonResponse
+
 
 
 # dic_id_name = {
@@ -53,9 +58,14 @@ def test_request(request):
     if request.method == 'GET':
         return HttpResponse('test request is OK, Method is GET')
     elif request.method == 'POST':
-        novel_id = request.POST['select_novel_list']
+        # novel_id = request.POST['select_novel_list']
+        # keyword = request.POST['keyword']
+
+        novel_id = request.POST.get('drop_down')
+        keyword = request.POST.get('key_word')
         novel_name = dic_id_name[novel_id]
-        keyword = request.POST['keyword']
+        print(novel_id)
+        print(keyword)
 
         '''Open the file from media'''
         plain_text = open(os.path.join(settings.MEDIA_ROOT/"Plain text of GE's novels with row count", novel_name)).readlines()
@@ -98,7 +108,7 @@ def test_request(request):
                     dic_final_result.update({key: [relative_frequency, keyword]})
 
         context = {
-            'final_result_chart': json.dumps(dic_final_result)
+            'final_result': json.dumps(dic_final_result)
         }
 
         # print(novel_name)
@@ -106,16 +116,19 @@ def test_request(request):
         # print(total_frequency)
         # print(dic_group)
         print(dic_final_result)
-        sorted_dic_final_result = sorted(dic_final_result.items(), key=lambda e: e[1][0], reverse=True)
+        # print(context)
+        # sorted_dic_final_result = sorted(dic_final_result.items(), key=lambda e: e[1][0], reverse=True)
         # print(sorted_dic_final_result)
-        for i in sorted_dic_final_result:
-            final_results.update({i[0]: i[1]})
-        print(final_results)
+        # for i in sorted_dic_final_result:
+        #     final_results.update({i[0]: i[1]})
+        # print(final_results)
+        response = JsonResponse(dic_final_result)
+        return response
 
 
-        return render(request, 'data_visualization.html', locals())
-
-        # return HttpResponse('select novel is:{} ----  keyword is:{}'.format((novel_name), keyword))
+        # return render(request, 'index.html', locals())
+        # return HttpResponseRedirect(request.path_info)
+        # return redirect(request.path)
     else:
         print('Method error')
         return HttpResponse('Request method error')

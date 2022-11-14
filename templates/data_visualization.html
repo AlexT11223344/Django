@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/static/js/jquery.js"></script>
+    <script src="../static/js/jquery.js"></script>
 
     <!--  1. Core CSS of Bootstrap  -->
     <link href="../static/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
@@ -51,7 +51,7 @@
 {#    <p>{{ dic_final_result }}</p>#}
 </div>
 {#<svg width="960" height="500" id="mainsvg" class="svgs"></svg>#}
-<div id="my_dataviz"></div>
+<div id="my_data_visualization"></div>
     <script>
         let data_x_y = [];
         let data_x = [];
@@ -61,7 +61,6 @@
         var key_word = '{{ keyword | safe }}';
         for(let key in dic_result_data){
             let data_all = {group:key, frequency:dic_result_data[key][0].toString()};
-            {#console.log(data_all)#}
             data_x_y.push(data_all);
             {#data_x.push(parseInt(key));#}
             {#data_y.push(dic_result_data[key][0])#}
@@ -97,7 +96,7 @@ var margin = {top: 10, right: 30, bottom: 90, left: 40},
     height = 450 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("#my_data_visualization")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -163,7 +162,6 @@ var u = svg.selectAll("rect")
       .attr("fill", "#69b3a2")
 
     </script>
-    <script type="text/javascript" src="../static/js/data_visulization.js"></script>
 {#    <input type="button" id="test" value="Test" onclick="data_visulization({{ keyword }})">#}
 </body>
 </html>

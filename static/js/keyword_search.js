@@ -216,6 +216,7 @@ function keywordsearch() {
     /*the end*/
     var status_value = $("input[type='checkbox']").is(':checked')
     this.keyword = $("#keyword").val();
+    // alert(this.keyword)
     this.content = $("#novel_content").text();
     this.arr = this.content.split("\n");
     this.result = [];
